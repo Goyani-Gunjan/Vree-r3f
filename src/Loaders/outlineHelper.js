@@ -16,7 +16,7 @@ export function setupOutline(renderer, scene, camera, objects ) {
   composer.addPass(renderPass);
 
   const outlinePass = new OutlinePass(
-    new THREE.Vector2(window.innerWidth, window.innerHeight),
+    new THREE.Vector2(renderer.domElement.Width, renderer.domElement.height),
     scene,
     camera
   );
@@ -26,7 +26,7 @@ export function setupOutline(renderer, scene, camera, objects ) {
   outlinePass.visibleEdgeColor.set(0xffffff);
   outlinePass.hiddenEdgeColor.set(0xfefefe);
   outlinePass.edgeStrength = 15.0;
-  outlinePass.outlineThickness = 2;
+  outlinePass.outlineThickness = 20;
   outlinePass.outlinePulse = 0;
   outlinePass.usePatternTexture = false;
  outlinePass.renderToScreen = false

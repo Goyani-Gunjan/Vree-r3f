@@ -11,7 +11,7 @@ export function Model({ onModelLoaded }) {
     onModelLoaded(gltf.scene);
   }
 
-  return <primitive object={gltf.scene} scale={1.5} position={[0, -0.2, 0]} />;
+  return  <primitive object={gltf.scene} scale={1.5} position={[0, -0.2, 0]} />;
 }
 Model.propTypes = {
     onModelLoaded: PropTypes.func.isRequired,

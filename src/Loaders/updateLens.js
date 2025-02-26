@@ -179,7 +179,7 @@ const UpdateLens = ({ model }) => {
   useFrame(() => {
     if (composerRef.current) {
       composerRef.current.render();
-      console.log("Rendering outline pass...");
+   
     }
   });
 
