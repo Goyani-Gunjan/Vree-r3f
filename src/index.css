@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+html {
+    background-image: url('assets/background/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: background-image 0.3s ease-in-out;
+    color: #fff;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+/* #root {
+    background-image: url('assets/background/background.png'); /* Default (Dark Mode) */
+    /* background-size: cover; */
+    /* background-repeat: no-repeat; */
+    /* transition: background-image 0.3s ease-in-out; */
+/* }  */
+
+/* Light Mode */
+html:not(.dark) #root {
+    /* background-image: url('/background/background-light.png'); */
+    background-color: #fff;
+    color:#000;
+}
+  
