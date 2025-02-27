@@ -1,8 +1,8 @@
 import { makeObservable, observable, action } from "mobx";
 
 class Lens {
-  lensColor="#FFFFFF"  
-  lensTransparency =0.8;
+  lensColor = "#FFFFFF";
+  lensTransparency = 0.8;
 
   constructor() {
     makeObservable(this, {

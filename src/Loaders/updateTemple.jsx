@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { useThree, useFrame } from "@react-three/fiber";
 import { reaction } from "mobx";
 import templeStore from "../Stores/TempleStore";
-import { createLabel } from "./labelManager";
+import LensLabel from './LensLabel'
 import { loadTexture } from "./Model";
 import generalStore from "../Stores/GeneralStore";
 import { setupOutline } from "./outlineHelper";
@@ -29,9 +29,7 @@ const UpdateTemple = ({ model }) => {
 
     if (leftTemple && rightTemple) {
       generalStore.setOriginalTempleTexture(leftTemple.material.map);
-      const templeLabel = createLabel("Temple");
-      templeLabel.position.set(1, 0.2, -1);
-      rightTemple.add(templeLabel);
+    
 
       // Initialize Outline Effect
       if (!composerRef.current || !outlinePassRef.current) {
@@ -92,7 +90,7 @@ const UpdateTemple = ({ model }) => {
     }
   });
 
-  return null;
+ return model ? <LensLabel  name="Temple" position={[2 , 0 , -2]} /> : null;
 };
 
 UpdateTemple.propTypes = {

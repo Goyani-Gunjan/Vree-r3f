@@ -3,11 +3,15 @@ import { useEffect, useState } from "react";
 
 const Scroll = observer(({ value, onChange }) => {
   const values = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0];
-  const evenValues = values.filter((val) => Number.isInteger(val * 10) && (val * 10) % 2 === 0);
+  const evenValues = values.filter(
+    (val) => Number.isInteger(val * 10) && (val * 10) % 2 === 0
+  );
 
   // Convert value to index
   const valueIndex = values.indexOf(value);
-  const [selectedIndex, setSelectedIndex] = useState(valueIndex !== -1 ? valueIndex : 2);
+  const [selectedIndex, setSelectedIndex] = useState(
+    valueIndex !== -1 ? valueIndex : 2
+  );
   const [hover, setHover] = useState(false); // Hover state for label
 
   useEffect(() => {

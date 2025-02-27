@@ -1,20 +1,20 @@
-import {  makeAutoObservable , observable, action } from "mobx";
+import { makeAutoObservable, observable, action } from "mobx";
 
 class TempleStore {
-  templeColor='#ffffff';
-  templeTexture='/assets/texture/original.jpg';
-  templeMetalness=0.1;
-  templeRoughness=0.2;
-  templeTransparency=0.2;
+  templeColor = "#ffffff";
+  templeTexture = "/assets/texture/original.jpg";
+  templeMetalness = 0.1;
+  templeRoughness = 0.2;
+  templeTransparency = 0.2;
 
   constructor() {
-    makeAutoObservable (this, {
+    makeAutoObservable(this, {
       templeColor: observable,
       templeTexture: observable,
       templeMetalness: observable,
       templeRoughness: observable,
       templeTransparency: observable,
-      
+
       setTempleColor: action,
       setTempleTexture: action,
       setTempleMetalness: action,
@@ -39,7 +39,6 @@ class TempleStore {
   setTempleTransparency(transparency) {
     this.templeTransparency = transparency;
   }
-
 }
 
 const templeStore = new TempleStore();

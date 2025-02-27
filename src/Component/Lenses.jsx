@@ -1,15 +1,14 @@
-import Heading from "./Heading";
+import Title from "./Title";
 import Color from "./Color";
 import Scroll from "./Scroll";
-import lens from '../Stores/Lens'
+import lens from "../Stores/Lens";
 import { observer } from "mobx-react-lite";
-
 
 function Lenses() {
   return (
     <div>
       <div className="pt-5 px-5">
-        <Heading title="Color" />
+        <Title title="Color" />
         <Color
           handleClick={(color) => {
             lens.setLensColor(color);
@@ -18,7 +17,7 @@ function Lenses() {
         />
       </div>
       <div className="p-5 mt-5 ">
-        <Heading title="Material Properties" />
+        <Title title="Material Properties" />
         <div className="flex allign-center w-full">
           <label className="mt-[30px] mr-9">Transparency</label>
           <Scroll

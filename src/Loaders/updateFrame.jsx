@@ -4,22 +4,18 @@ import { reaction } from "mobx";
 import frameStore from "../Stores/FrameStore";
 import { loadTexture } from "./Model";
 import generalStore from "../Stores/GeneralStore";
-import { createLabel } from "./labelManager";
+import LensLabel from "./LensLabel";
 
 const UpdateFrame = ({ model }) => {
   useEffect(() => {
     if (!model) return;
     const frameMesh = model.getObjectByName("frame");
-    
+
     if (!frameMesh) return;
 
     if (model.children?.[0]?.material?.map) {
       generalStore.setOriginalFrameTexture(model.children[0].material.map);
     }
-
-    const frameLabel = createLabel("Frame");
-    frameLabel.position.set(0, 0, 0);
-    frameMesh.add(frameLabel);
 
     const disposeReaction = reaction(
       () => ({
@@ -57,7 +53,7 @@ const UpdateFrame = ({ model }) => {
     return () => disposeReaction();
   }, [model]);
 
-  return null;
+  return model ? <LensLabel name="Frame" position={[0, 0, 0]} /> : null;
 };
 
 UpdateFrame.propTypes = {

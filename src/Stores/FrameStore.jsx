@@ -1,12 +1,11 @@
 import { makeObservable, observable, action } from "mobx";
 
 class FrameStore {
-  frameColor = "#FFFFFF"; 
-  frameTexture = '/assets/texture/original.jpg';
-  frameMetalness = 0.2; 
-  frameRoughness = 0.1; 
+  frameColor = "#FFFFFF";
+  frameTexture = "/assets/texture/original.jpg";
+  frameMetalness = 0.2;
+  frameRoughness = 0.1;
   frameTransparency = 0;
-   
 
   constructor() {
     makeObservable(this, {
@@ -15,7 +14,7 @@ class FrameStore {
       frameMetalness: observable,
       frameRoughness: observable,
       frameTransparency: observable,
-    
+
       setFrameColor: action,
       setFrameTexture: action,
       setFrameMetalness: action,

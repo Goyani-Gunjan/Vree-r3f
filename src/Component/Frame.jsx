@@ -1,4 +1,4 @@
-import Heading from "./Heading";
+import Title from "./Title";
 import Color from "./Color";
 import Scroll from "./Scroll";
 import Texture from "./Texture";
@@ -9,7 +9,7 @@ function Frame() {
   return (
     <div className="w-full">
       <div className="pt-5 px-5 w-[100%]">
-        <Heading title="Texture" />
+        <Title title="Texture" />
         <Texture
           handleClick={(texture) => {
             frameStore.setFrameTexture(texture);
@@ -19,7 +19,7 @@ function Frame() {
         />
       </div>
       <div className="pt-5 px-5">
-        <Heading title="Color" />
+        <Title title="Color" />
         <Color
           handleClick={(color) => {
             frameStore.setFrameColor(color);
@@ -28,7 +28,7 @@ function Frame() {
         />
       </div>
       <div className="p-5 mt-5 ">
-        <Heading title="Material Properties" />
+        <Title title="Material Properties" />
         <div className="flex allign-center w-full">
           <label className="mt-[30px] mr-9">Metallic</label>
           <Scroll

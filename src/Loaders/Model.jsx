@@ -1,21 +1,50 @@
 /* eslint-disable react/no-unknown-property */
-import { useGLTF, Environment } from "@react-three/drei";
+import { useGLTF, Environment, Html, useProgress } from "@react-three/drei";
 import * as THREE from "three";
-import PropTypes from "prop-types"; // ✅ Import PropTypes
-
+import PropTypes from "prop-types";
+import { useState, useEffect } from "react";
 
 export function Model({ onModelLoaded }) {
-  const gltf = useGLTF("/assets/glbs/sampleModel.glb");
+  // eslint-disable-next-line no-unused-vars
+  const { progress } = useProgress();
+  const [loading, setLoading] = useState(true);
 
-  if (gltf.scene && onModelLoaded) {
-    onModelLoaded(gltf.scene);
-  }
+  const { scene } = useGLTF("/assets/glbs/sampleModel.glb");
 
-  return  <primitive object={gltf.scene} scale={1.5} position={[0, -0.2, 0]} />;
+  useEffect(() => {
+    if (scene) {
+      setTimeout(() => {
+        setLoading(false); // Hide loader after 2 seconds
+        if (onModelLoaded) onModelLoaded(scene);
+      }, 1000);
+    }
+  }, [scene, onModelLoaded]);
+
+  return (
+    <>
+      {loading && (
+        <Html center>
+          <div style={{ textAlign: "center", color: "#fff" }}>
+            <img
+              src="/assets/icons/loader.svg"
+              alt="Loading..."
+              width="280"
+              height="280"
+            />
+            <p>Loading: </p>
+          </div>
+        </Html>
+      )}
+
+      {!loading && scene && (
+        <primitive object={scene} scale={1.5} position={[0, -0.2, 0]} />
+      )}
+    </>
+  );
 }
 Model.propTypes = {
-    onModelLoaded: PropTypes.func.isRequired,
-  };
+  onModelLoaded: PropTypes.func.isRequired,
+};
 
 export function EnvironmentLoad() {
   return (
@@ -37,19 +66,18 @@ export function SceneLights() {
   );
 }
 
-
 export const loadTexture = (url, onLoad) => {
-    const textureLoader = new THREE.TextureLoader();
-    textureLoader.load(
-      url,
-      (texture) => {
-        if (onLoad) onLoad(texture);
-      },
-      () => {
-        console.log("Loading texture...");
-      },
-      (error) => {
-        console.error("Error loading texture:", error);
-      }
-    );
-  };
+  const textureLoader = new THREE.TextureLoader();
+  textureLoader.load(
+    url,
+    (texture) => {
+      if (onLoad) onLoad(texture);
+    },
+    () => {
+      console.log("Loading texture...");
+    },
+    (error) => {
+      console.error("Error loading texture:", error);
+    }
+  );
+};

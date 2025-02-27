@@ -16,8 +16,6 @@ function SceneSetup({ model }) {
 
     model.castShadow = true;
 
-
-
     return () => {
       console.log("Cleanup SceneSetup");
     };
@@ -26,16 +24,16 @@ function SceneSetup({ model }) {
   useFrame(() => {
     if (updateLensRef.current?.composer) {
       updateLensRef.current.composer.render();
-    } 
+    }
   });
 
   return (
-     <>
-            <UpdateFrame model={model} />   
-            <UpdateLens model={model} />
-            <UpdateTemple model={model} />
-     </>
-  )
+    <>
+      <UpdateFrame model={model} />
+      <UpdateLens model={model} />
+      <UpdateTemple model={model} />
+    </>
+  );
 }
 
 SceneSetup.propTypes = {

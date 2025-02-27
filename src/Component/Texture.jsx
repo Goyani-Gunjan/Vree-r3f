@@ -1,10 +1,5 @@
-
 /* eslint-disable react/prop-types */
-function Texture({ selectedTexture,handleClick }) {
-  // const handleClick = (texture) => {
-  //   // setSelectedTexture(texture);
-  //   handleClick(texture);
-  // };
+function Texture({ selectedTexture, handleClick }) {
   return (
     <div className="flex flex-wrap gap-8 w-[500px] max-w-lg ">
       <div
